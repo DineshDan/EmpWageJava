@@ -6,29 +6,30 @@ public static void main(String[] args) {
    int IS_PART_TIME=1;
    int IS_FULL_TIME=2;
    int EMP_RATE_PER_HR=20;
+   int NUM_WORKING_DAYS=20;
+   int totalSalary=0;
    System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
-   Random random=new Random();
-   int employeeType=random.nextInt(3);
-   System.out.println("random number:"+employeeType);
-   switch (employeeType) {
-   case 1:
+   for(int day=1;day<=NUM_WORKING_DAYS;day++ )
+   {
+    Random random=new Random();
+    int employeeType=random.nextInt(3);
+    switch (employeeType) {
+    case 1:
            empHrs=4;
-           System.out.println("Employee hours: "+empHrs);
            salary=(empHrs*EMP_RATE_PER_HR);
-           System.out.println("Salary: "+salary);
            break;
-   case 2:
+    case 2:
            empHrs=8;
-           System.out.println("Employee hours: "+empHrs);
            salary=(empHrs*EMP_RATE_PER_HR);
-           System.out.println("Salary: "+salary);
            break;
-   default:
+    default:
            empHrs=0;
-           System.out.println("Employee hours: "+empHrs);
            salary=(empHrs*EMP_RATE_PER_HR);
-           System.out.println("Salary: "+salary);
            break;
     }
-  }
+    System.out.println("Day: "+day+" "+"Salary: "+salary);
+    totalSalary=(totalSalary+salary);
+   }
+   System.out.println("Total Salary: "+totalSalary);
+}
 }
