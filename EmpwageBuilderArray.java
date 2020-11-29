@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -9,21 +10,26 @@ public class EmployeewageBuilderArray implements IComputeEmpwage {
 	public int numOfCompany = 0;
 
 	private LinkedList<CompanyEmpwage> companyEmpwageList;
-
+	private Map<String, CompanyEmpWage>companyEmpageMap;
 
 	public EmployeewageBuilderArray() {
-	companyEmpWageList= new LinkedList<CompanyEmpWage>();
+	companyEmpwageList= new LinkedList<CompanyEmpwage>();
+	companyEmpwageMap=new HashMap<String, CompanyEmpwage>();
 	}
 
 	public void addCompanyEmpwage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
 		companyEmpwage companyEmpwage = new CompanyEmpwage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-		companyEmpWageList.add(companyEmpWage);
+		companyEmpWageList.add(companyEmpwage);
+		companyEmpWageMap.put(company, companyEmpwage);
+
 	}
 
 	public void computeEmpwage() {
 		for (int i = 0; i < numOfCompany; i++) {
-			companyEmpwage[i].setTotalEmpwage(this.computeEmpwage(companyEmpwage[i]));
-			System.out.println(companyEmpwage[i]);
+		CompanyEmpwage company=companyEmpwageList.get(i);
+				company.setTotalEmpwage(this.computeEmpwage(company));
+				System.out.println(company);
+
 		}
 	}
 
