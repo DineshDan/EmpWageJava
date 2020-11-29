@@ -1,18 +1,23 @@
+import java.util.LinkedList;
+import java.util.Map;
+
+
 public class EmployeewageBuilderArray implements IComputeEmpwage {
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 
 	public int numOfCompany = 0;
 
-	CompanyEmpwage companyEmpwage[];
+	private LinkedList<CompanyEmpwage> companyEmpwageList;
+
 
 	public EmployeewageBuilderArray() {
-		companyEmpwage = new CompanyEmpwage[5];
+	companyEmpWageList= new LinkedList<CompanyEmpWage>();
 	}
 
-	public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
-		companyEmpwage[numOfCompany] = new CompanyEmpwage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-		numOfCompany++;
+	public void addCompanyEmpwage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+		companyEmpwage companyEmpwage = new CompanyEmpwage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+		companyEmpWageList.add(companyEmpWage);
 	}
 
 	public void computeEmpwage() {
@@ -52,5 +57,10 @@ public class EmployeewageBuilderArray implements IComputeEmpwage {
 		EmpwageBuilder.addCompanyEmpWage("Dmart", 20, 2, 10);
 		EmpwageBuilder.addCompanyEmpWage("Reliance", 10, 4, 20);
 		EmpwageBuilder.computeEmpWage();
+
+
+	public int getTotalWage(String company) {
+		return companyEmpWageMap.get(company).totalEmpWage;
 	}
+
 }
